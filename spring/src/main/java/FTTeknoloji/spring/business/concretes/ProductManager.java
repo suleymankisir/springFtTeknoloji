@@ -45,16 +45,19 @@ public class ProductManager implements ProductService{
 	}
 
 	@Override
-	public DataResult<List<Product>> getByProductDateBefore(LocalDate productDate) {
+	public DataResult<List<Product>> getByProductDateBefore() {
 		// TODO Auto-generated method stub
-		return new SuccessDataResult<List<Product>>(this.productDao.getByProductDateBefore(productDate),"Data listelendi");
+		return new SuccessDataResult<List<Product>>(this.productDao.getByProductDateBefore(LocalDate.now()),"data listelendi");
 	}
 
 	@Override
-	public DataResult<List<Product>> getByProductDateAfter(LocalDate productDate) {
+	public DataResult<List<Product>> getByProductDateAfter() {
 		// TODO Auto-generated method stub
-		return new SuccessDataResult<List<Product>>(this.productDao.getByProductDateAfter(productDate), "Data listelendi");
+		return new SuccessDataResult<List<Product>>(this.productDao.getByProductDateAfter(), "Data listelendi");
 	}
+
+
+
 
 
 	

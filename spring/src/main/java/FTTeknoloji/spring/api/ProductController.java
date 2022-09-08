@@ -2,7 +2,7 @@ package FTTeknoloji.spring.api;
 
 
 
-import java.time.LocalDate;
+
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import FTTeknoloji.spring.business.abstracts.ProductService;
@@ -46,18 +46,16 @@ public class ProductController {
 	}
 	
 	@GetMapping("/getByProductDateBefore")
-	public DataResult<List<Product>> getByProductDateBefore(@RequestParam LocalDate productDate){
-		return this.productService.getByProductDateBefore(productDate);
-		
-		
+	public DataResult<List<Product>> getByProductDateBefore(){
+		return this.productService.getByProductDateBefore();
 	}
 	
 	@GetMapping("/getByProductDateAfter")
-	public DataResult<List<Product>> getByProductDateAfter(@RequestParam LocalDate productDate){
-		return this.productService.getByProductDateAfter(productDate);
-		
-		
+	public DataResult<List<Product>> getByProductDateAfter(){
+		return this.productService.getByProductDateAfter();
 	}
+	
+
 	
 	
 

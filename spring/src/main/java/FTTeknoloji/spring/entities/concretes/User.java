@@ -2,6 +2,8 @@ package FTTeknoloji.spring.entities.concretes;
 
 
 
+
+
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,7 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,7 +27,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name="users")
 
-
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property ="userId")
 public class User {
 	
 	@Id

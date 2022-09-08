@@ -12,6 +12,7 @@ import FTTeknoloji.spring.core.utilities.results.Result;
 import FTTeknoloji.spring.core.utilities.results.SuccessDataResult;
 import FTTeknoloji.spring.core.utilities.results.SuccessResult;
 import FTTeknoloji.spring.dataAccess.abstracts.ProductCommentDao;
+import FTTeknoloji.spring.entities.concretes.Product;
 import FTTeknoloji.spring.entities.concretes.ProductComment;
 
 @Service
@@ -39,9 +40,9 @@ public class ProductCommentManager implements ProductCommentService {
 	}
 
 	@Override
-	public DataResult<List<ProductComment>> getByCommentProductId(int productId) {
+	public DataResult<List<ProductComment>> getByCommentProductId(Product productId) {
 		// TODO Auto-generated method stub
-		return new SuccessDataResult<List<ProductComment>>(this.productCommentDao.getByCommentProduct(productId));
+		return new SuccessDataResult<List<ProductComment>>(this.productCommentDao.findByProduct(productId));
 	}
 
 	@Override
@@ -51,16 +52,17 @@ public class ProductCommentManager implements ProductCommentService {
 	}
 
 	@Override
-	public DataResult<List<ProductComment>> getByUserIdAndCommentDateBetween(int userId, LocalDate d1, LocalDate d2) {
+	public DataResult<List<ProductComment>> getByUserIdAndCommentDateBetween(int userId, String d1, String d2) {
 		// TODO Auto-generated method stub
-		return new SuccessDataResult<List<ProductComment>>(this.productCommentDao.getByUserAndCommentDateBetween(userId, d1, d2));
+		return new SuccessDataResult<List<ProductComment>>(this.productCommentDao.findAllByUserAndCommentDateBetween(userId, d1, d2), "Data listelendi");
 	}
 
 	@Override
 	public DataResult<List<ProductComment>> getByProductIdAndCommentDateBetween(int productId, LocalDate d1,
 			LocalDate d2) {
 		// TODO Auto-generated method stub
-		return new SuccessDataResult<List<ProductComment>>(this.productCommentDao.getByProductAndCommentDateBetween(productId, d1, d2));
+		return new SuccessDataResult<List<ProductComment>>(this.productCommentDao.findAllByProductAndCommentDateBetween(productId, d1, d2), "Data listelendi");
 	}
 
+	
 }

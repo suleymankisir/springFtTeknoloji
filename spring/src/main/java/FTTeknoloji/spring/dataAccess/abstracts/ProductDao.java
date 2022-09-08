@@ -16,10 +16,9 @@ public interface ProductDao extends JpaRepository<Product,Integer> {
 	
 	
 	
-	  @Query("From Product p where p.productDate >: productDate ") 
-	  List<Product> getByProductDateBefore(LocalDate productDate);
-	  
-	  @Query("From Product p where p.productDate <: productDate ") 
-	  List<Product> getByProductDateAfter(LocalDate productDate);
+    @Query("From Product where productDate > NOW() OR productDate is null")
+    List<Product> getByProductDateAfter();
+
+    List<Product> getByProductDateBefore(LocalDate now);
 	 
 }

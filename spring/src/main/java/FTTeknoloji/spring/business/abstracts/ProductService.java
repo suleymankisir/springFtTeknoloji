@@ -2,7 +2,7 @@ package FTTeknoloji.spring.business.abstracts;
 
 
 
-import java.time.LocalDate;
+
 
 import java.util.List;
 
@@ -15,8 +15,8 @@ public interface ProductService {
 	DataResult<List<Product>> getAll();
 	Product add(Product product);
 	
-	DataResult<List<Product>> getByProductDateBefore(LocalDate productDate);
-	DataResult<List<Product>> getByProductDateAfter(LocalDate productDate);
+	DataResult<List<Product>> getByProductDateBefore();
+	DataResult<List<Product>> getByProductDateAfter();
 }
 	
 

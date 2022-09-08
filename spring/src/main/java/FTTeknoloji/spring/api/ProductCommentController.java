@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+
 import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import FTTeknoloji.spring.business.abstracts.ProductCommentService;
 import FTTeknoloji.spring.core.utilities.results.DataResult;
+import FTTeknoloji.spring.entities.concretes.Product;
 import FTTeknoloji.spring.entities.concretes.ProductComment;
 
 @RestController
@@ -27,7 +30,7 @@ public class ProductCommentController {
 	}
 	
 	@GetMapping("/getByCommnetProductId")
-	public DataResult<List<ProductComment>> getByCommnetProductId(@RequestParam int productId){
+	public DataResult<List<ProductComment>> getByCommnetProductId(@RequestParam Product productId){
 		return this.productCommentService.getByCommentProductId(productId);
 		
 		
@@ -41,18 +44,17 @@ public class ProductCommentController {
 	}
 	
 	@GetMapping("/getByUserIdAndCommentDateBetween")
-	public DataResult<List<ProductComment>> getByUserIdAndCommentDateBetween(@RequestParam int userId,@RequestParam LocalDate d1,@RequestParam LocalDate d2){
+	public DataResult<List<ProductComment>> getByUserIdAndCommentDateBetween(@RequestParam int userId,  String d1, String d2){
+		
 		return this.productCommentService.getByUserIdAndCommentDateBetween(userId, d1, d2);
-		
-		
 	}
 	
 	@GetMapping("/getByProductIdAndCommentDateBetween")
-	public DataResult<List<ProductComment>> getByProductIdAndCommentDateBetween(@RequestParam int productId,@RequestParam LocalDate d1,@RequestParam LocalDate d2){
-		return this.productCommentService.getByProductIdAndCommentDateBetween(productId, d1, d2);
+	public DataResult<List<ProductComment>> getByProductIdAndCommentDateBetween(int userId, LocalDate d1, LocalDate d2){
 		
-		
+		return this.productCommentService.getByProductIdAndCommentDateBetween(userId, d1, d2);
 	}
+
 	
 	
 	
