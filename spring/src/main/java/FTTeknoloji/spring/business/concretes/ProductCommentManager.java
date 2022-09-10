@@ -14,6 +14,7 @@ import FTTeknoloji.spring.core.utilities.results.SuccessResult;
 import FTTeknoloji.spring.dataAccess.abstracts.ProductCommentDao;
 import FTTeknoloji.spring.entities.concretes.Product;
 import FTTeknoloji.spring.entities.concretes.ProductComment;
+import FTTeknoloji.spring.entities.concretes.User;
 
 @Service
 public class ProductCommentManager implements ProductCommentService {
@@ -26,42 +27,48 @@ public class ProductCommentManager implements ProductCommentService {
 		this.productCommentDao = productCommentDao;
 	}
 
+	
 	@Override
 	public DataResult<List<ProductComment>> getAll() {
-		// TODO Auto-generated method stub
+		
 		return new SuccessDataResult<List<ProductComment>>(this.productCommentDao.findAll());
 	}
 
+	
 	@Override
 	public Result add(ProductComment productComment) {
+		
 		this.productCommentDao.save(productComment);
 		
 		return new SuccessResult("Yorum eklendi");
 	}
 
+	
 	@Override
 	public DataResult<List<ProductComment>> getByCommentProductId(Product productId) {
-		// TODO Auto-generated method stub
+		
 		return new SuccessDataResult<List<ProductComment>>(this.productCommentDao.findByProduct(productId));
 	}
 
+	
 	@Override
-	public DataResult<List<ProductComment>> getByCommentUserId(int userId) {
-		// TODO Auto-generated method stub
-		return new SuccessDataResult<List<ProductComment>>(this.productCommentDao.getByCommentUser(userId));
+	public DataResult<List<ProductComment>> getByCommentUserId(User userId) {
+		
+		return new SuccessDataResult<List<ProductComment>>(this.productCommentDao.findByUser(userId));
 	}
 
+	
 	@Override
-	public DataResult<List<ProductComment>> getByUserIdAndCommentDateBetween(int userId, String d1, String d2) {
-		// TODO Auto-generated method stub
-		return new SuccessDataResult<List<ProductComment>>(this.productCommentDao.findAllByUserAndCommentDateBetween(userId, d1, d2), "Data listelendi");
+	public DataResult<List<ProductComment>> getByUserIdAndCommentDateBetween(User userId, String d1, String d2) {
+		
+		return new SuccessDataResult<List<ProductComment>>(this.productCommentDao.findAllByUserAndCommentDateBetween(userId, LocalDate.parse(d1), LocalDate.parse(d2)), "Data listelendi");
 	}
 
+	
 	@Override
-	public DataResult<List<ProductComment>> getByProductIdAndCommentDateBetween(int productId, LocalDate d1,
-			LocalDate d2) {
-		// TODO Auto-generated method stub
-		return new SuccessDataResult<List<ProductComment>>(this.productCommentDao.findAllByProductAndCommentDateBetween(productId, d1, d2), "Data listelendi");
+	public DataResult<List<ProductComment>> getByProductIdAndCommentDateBetween(Product productId, String d1,String d2) {
+		
+		return new SuccessDataResult<List<ProductComment>>(this.productCommentDao.findAllByProductAndCommentDateBetween(productId, LocalDate.parse(d1), LocalDate.parse(d2)), "Data listelendi");
 	}
 
 	

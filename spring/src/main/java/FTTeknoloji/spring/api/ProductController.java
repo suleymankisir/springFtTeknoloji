@@ -32,24 +32,24 @@ public class ProductController {
 		super();
 		this.productService = productService;
 	}
-	
+	//ürün ekle
 	@PostMapping("/add")
 	public Product add(@RequestBody Product product) {
 		return this.productService.add(product); 
 		
 	}
-	
+	//ürünleri listele
 	@GetMapping("/getall")
 	public DataResult<List<Product>> getAll(){
 	 
 		return this.productService.getAll();
 	}
-	
+	//tarihi geçmiş ürünler
 	@GetMapping("/getByProductDateBefore")
 	public DataResult<List<Product>> getByProductDateBefore(){
 		return this.productService.getByProductDateBefore();
 	}
-	
+	//tarihi geçmemiş ürünler
 	@GetMapping("/getByProductDateAfter")
 	public DataResult<List<Product>> getByProductDateAfter(){
 		return this.productService.getByProductDateAfter();

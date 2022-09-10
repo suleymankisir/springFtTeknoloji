@@ -32,27 +32,31 @@ public class ProductManager implements ProductService{
 
 	@Override
 	public DataResult<List<Product>> getAll() {
-		// TODO Auto-generated method stub
+		
+		
 		return new SuccessDataResult<List<Product>>(
-				this.productDao.findAll(),"Data Listelendi ") ;
+				this.productDao.findAll(),"Product Data listelendi ") ;
 	}
 
+	
 	@Override
 	public Product add(Product product) {
-		// TODO Auto-generated method stub
+		
 		
 		return this.productDao.save(product);
 	}
 
+	
 	@Override
 	public DataResult<List<Product>> getByProductDateBefore() {
-		// TODO Auto-generated method stub
-		return new SuccessDataResult<List<Product>>(this.productDao.getByProductDateBefore(LocalDate.now()),"data listelendi");
+		
+		return new SuccessDataResult<List<Product>>(this.productDao.getByProductDateBefore(LocalDate.now()),"Data listelendi");
 	}
 
+	
 	@Override
 	public DataResult<List<Product>> getByProductDateAfter() {
-		// TODO Auto-generated method stub
+		
 		return new SuccessDataResult<List<Product>>(this.productDao.getByProductDateAfter(), "Data listelendi");
 	}
 

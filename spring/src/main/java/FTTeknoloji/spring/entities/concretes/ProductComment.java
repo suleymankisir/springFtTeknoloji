@@ -13,8 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonFormat.Shape;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -43,7 +42,7 @@ public class ProductComment {
 	
 	
 	 @Column(name="comment_date")
-	 @JsonFormat(pattern = "yyyy-MM-dd",shape = Shape.STRING)
+	 //@JsonFormat(pattern = "yyyy-MM-dd",shape = Shape.STRING)
      private LocalDate commentDate;
 	
 	 @ManyToOne()
